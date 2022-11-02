@@ -1,37 +1,173 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post-collapse.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
 
-{% block title %}{{ __('title.tag') }}: {{ page.tag }} | {{ config.title }}{% endblock %}
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
 
-{% block content %}
+<meta charset="utf-8" >
 
-  {#################}
-  {### TAG BLOCK ###}
-  {#################}
-  <div class="post-block tag">
+<title>rxws</title>
+<meta name="keywords" content="rxws, rxws">
+<meta name="description" content="rxws">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <{% if theme.seo %}h2{% else %}h1{% endif %}>{#
-        #}{{ page.tag }}{#
-        #}<small>{{  __('title.tag')  }}</small>
-        </{% if theme.seo %}h2{% else %}h1{% endif %}>
-      </div>
 
-      {% for post in page.posts %}
-        {{ post_template.render(post) }}
-      {% endfor %}
+<link rel="stylesheet" href="/style/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://rxws.com">
+        <img class="avatar" src="/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://rxws.com">
+        <h1 class="site-title">rxws</h1>
+      </a>
     </div>
-
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
   </div>
-  {#####################}
-  {### END TAG BLOCK ###}
-  {#####################}
+</div>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+<div class="content-container">
+
+  <div class="current-tag-container">
+    <h2 class="title">
+      <i class="icon icon-pricetags-outline"></i> test
+    </h2>
+  </div>
+
+  
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2022/11/01/test/">
+        <h2 class="post-title">hello hexo</h2>
+      </a>
+      <a href="/2022/11/01/test/">
+          <div class="post-abstract">
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2022-11-01</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/test/">
+                test
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+</div>
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/f-dong" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+      
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+    </div>
+  </body>
+</html>
+
+
