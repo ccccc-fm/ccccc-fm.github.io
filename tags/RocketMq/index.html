@@ -1,199 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>Tag: RocketMq - rxws</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="rxws"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="rxws"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="rxws"><meta property="og:url" content="http://rxws.com/"><meta property="og:site_name" content="rxws"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://rxws.com/img/og_image.png"><meta property="article:author" content="chenfm"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://rxws.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://rxws.com"},"headline":"rxws","image":["http://rxws.com/img/og_image.png"],"author":{"@type":"Person","name":"chenfm"},"publisher":{"@type":"Organization","name":"rxws","logo":{"@type":"ImageObject","url":"http://rxws.com/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
-<meta charset="utf-8" >
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-<title>rxws</title>
-<meta name="keywords" content="rxws, rxws">
-<meta name="description" content="rxws">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style/main.css">
-
-
-<link rel="stylesheet" href="/style/jquery.fancybox.min.css">
-
-
-
-
-
-
-
-  <meta name="generator" content="Hexo 6.3.0"></head>
-  <body>
-    <div id="app" class="main">
-
-<div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://rxws.com">
-        <img class="avatar" src="/images/avatar.png" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://rxws.com">
-        <h1 class="site-title">rxws</h1>
-      </a>
-    </div>
-    <div class="right">
-        <i class="icon menu-switch icon-menu-outline" ></i>
-    </div>
-  </div>
-</div>
-
-<div class="menu-container" style="height: 0;opacity: 0;">
-<nav class="menu-list">
-  
-    
-      <a href="/" class="menu purple-link">
-        首页
-      </a>
-    
-  
-    
-      <a href="/tags" class="menu purple-link">
-        标签
-      </a>
-    
-  
-    
-      <a href="/archives" class="menu purple-link">
-        归档
-      </a>
-    
-  
-    
-      <a href="/about" class="menu purple-link">
-        关于
-      </a>
-    
-  
-</nav>
-</div>
-
-
-
-<div class="content-container">
-
-  <div class="current-tag-container">
-    <h2 class="title">
-      <i class="icon icon-pricetags-outline"></i> RocketMq
-    </h2>
-  </div>
-
-  
-
-<section class="post-item">
-    <div class="content">
-      <a href="/2022/11/13/RocketMq%E5%85%A5%E9%97%A8/">
-        <h2 class="post-title">RocketMq入门</h2>
-      </a>
-      <a href="/2022/11/13/RocketMq%E5%85%A5%E9%97%A8/">
-          <div class="post-abstract">
-            
-			    介绍
-MQ的用处
-
-
-限流削峰
-异步解耦
-数据收集：收集业务日志、监控数据、用户行为
-
-RocketMQ基础概念
-消息(message): 生产和消费数据的最小单位，每条消息必须属于一个主题
-主题(topic): 一类消息的集合，每个主题包
-            
-          </div>
-      </a>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2022-11-13</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="/tags/RocketMq/">
-                RocketMq
-                
-                  ，
-                
-              </a>
-            
-              <a href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/">
-                消息中间件
-                
-                  ，
-                
-              </a>
-            
-              <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
-                消息队列
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-
-</div>
-
-<footer>
-<div class="site-footer">
-  <div class="social-container">
-    
-      
-        <a href="https://github.com/f-dong" target="_blank">
-          <i class="icon icon-github"></i>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  
-    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
-  
-  
-  
-  
-  
-  
-</div>
-</footer>
-
-
-      </div>
-      
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/main.js"></script>
-
-
-
-
-
-    </div>
-  </body>
-</html>
-
-
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="rxws" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/tags">Tags</a></li><li class="is-active"><a href="#" aria-current="page">RocketMq</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-11-13T15:11:02.000Z" title="11/13/2022, 11:11:02 PM">2022-11-13</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-11-15T16:07:54.118Z" title="11/16/2022, 12:07:54 AM">2022-11-16</time></span><span class="level-item"><a class="link-muted" href="/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/">消息中间件</a></span><span class="level-item">13 minutes read (About 2006 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/11/13/RocketMq%E5%85%A5%E9%97%A8/">RocketMq入门</a></h1><div class="content"><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ol>
+<li>MQ的用处</li>
+</ol>
+<ul>
+<li>限流削峰</li>
+<li>异步解耦</li>
+<li>数据收集：收集业务日志、监控数据、用户行为</li>
+</ul>
+<h2 id="RocketMQ基础"><a href="#RocketMQ基础" class="headerlink" title="RocketMQ基础"></a>RocketMQ基础</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><strong>消息(message)</strong>: 生产和消费数据的最小单位，每条消息必须属于一个主题</li>
+<li><strong>主题(topic)</strong>: 一类消息的集合，每个主题包含多个消息。一个生产者可以生产多个topic消息，一个消费者只能消费一个topic</li>
+<li>**标签(Tag)**：为消息设置的标签用于同一个topic下区分不同类型的消息</li>
+<li>**队列(Queue)**：存储消息的物理实体，一个topic包含多个Queue，每个Queue中存放的就是该Topic的消息。一个topic中的queue也叫topic中消息的分区。一个queue只能被一个消费者消费</li>
+<li><strong>消息标识(MessageId&#x2F;key)</strong>: 消息的唯一标识，生产者发送消息会产生一个msgId，消费者接收消息会产生offsetMsgId，用户指定而定业务id叫key</li>
+</ul>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><ol>
+<li>producer：生产消息</li>
+<li>consumer：进行消息消费</li>
+</ol>
+<ul>
+<li>负载均衡：一个topic中的queue会平均分配给消费者组中的消费者</li>
+<li>容错：组中的一个消费者挂掉后，其他的消费者会平分该消费者的queue</li>
+<li>消费者组只能消费一个topic的消息，不能同时消费多个topic的消息</li>
+<li>一个消费者组中的消费者必须订阅完全相同的topic</li>
+</ul>
+<ol start="3">
+<li>NameServer：broker和topic路由的注册中心，功能：broker管理、路由信息管理</li>
+<li>broker：用于存储和转发消息</li>
+</ol>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>①:启动namerserver -&gt; ②:启动broker -&gt; ③:创建topic -&gt; ④:生产消息 -&gt; ⑤:消费消息<br>1：<strong>namerserver</strong><br>因为rockermq的注册中心是无状态的，所以它的broker信息与路由信息需要broker主动发送给nameserver，所以先启动nameserver，关闭时先关闭broker<br>2：<strong>创建topic</strong><br>发送消息前应该先创建topic也可以设置自动创建，手动创建topic有两种方式：集群模式和broker模式，区别在于集群模式创建的topic在每个broker中的读写队列数量都是一致的，而broker模式你需要在逐个选择broker进行创建topic，读写队列自然数量自然可以不同。<br>手动创建topic的参数有四个：创建模式、读队列数量、写队列数量、perm。perm用于设置对当前创建Topic的操作权限：2表示只写，4表示只读，6表示读写。<br>3：<strong>读写队列</strong><br>生产者将消息写入写队列，消费者从队列中读取消息。在物理上读写队列是同一个队列，一般情况读写队列数量是相同的。但broker模式创建topic时读写队列数量不同，这样是为了缩容。<br><code>缩容</code>：如现在读写队列数量都为16个，需要缩容为都是8个，且保证消息不丢失。可以先将写队列动态调整为8个，此时只有8个写队列在往里写消息，16个队列在消费消息，待停止写入消息的那8个队列的消息消费完了之后，将读队列的数量修改为8，即实现了缩容</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><h4 id="生产消息"><a href="#生产消息" class="headerlink" title="生产消息"></a>生产消息</h4><ol>
+<li><strong>生产过程</strong>：<ul>
+<li>Producer发送消息之前，会先向NameServer发出获取 消息Topic的路由信息 的请求</li>
+<li>NameServer返回该Topic的 路由表 及 Broker列表<blockquote>
+<p>路由表是个map，key是topic名称，value是broker列表，列表中没有地址只有名称，produer通过路由表找到brokername,再从broker列表中找到broker地址</p>
+</blockquote>
+</li>
+<li>Producer根据代码中指定的Queue选择策略，从Queue列表中选出一个队列，用于后续存储消息<blockquote>
+<p>Queue选择算法：无序消息：轮询和最小投递延迟算法</p>
+</blockquote>
+</li>
+<li>Produer对消息做一些特殊处理，例如，消息本身超过4M，则会对其进行压缩</li>
+<li>Producer向选择出的Queue所在的Broker发出RPC请求，将消息发送到选择出的Queue<blockquote>
+<p>轮询算法：<br>默认选择的算法，保证消息在队列中均匀的消费<br>消息1发送个队列1，消息2发送给队列2，以此类推。缺点：消息1发送后，生产者要等消息成功发送后再把消息2发送给队列2，不成功下次还是给队列1发送。这样一来可能造成<strong>消息在生产者的缓存队列中大量积压</strong>，影响性能。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>最小投递延迟算法<br>统计每个队列投递消息的延迟，选择最小的队列进行投递，缺点：可能造成一个队列中存放了大量消息，造成消费者消费者能力下降，<strong>消息在MQ中积压严重</strong></p>
+</blockquote>
+<ol start="2">
+<li>消息的存储<br>RocketMQ中的消息存储在本地文件系统中，这些相关文件默认在当前用户主目录下的store目录中。</li>
+<li>indexFile<br>除了通过通常的指定Topic进行消息消费外，RocketMQ还提供了根据key进行消息查询的功能。该查询<br>是通过store目录中的index子目录中的indexFile进行索引实现的快速查询。当然，这个indexFile中的索<br>引数据是在 包含了key的消息 被发送到Broker时写入的。如果消息中没有包含key，则不会写入。</li>
+</ol>
+<h4 id="消费消息"><a href="#消费消息" class="headerlink" title="消费消息"></a>消费消息</h4><ol>
+<li><strong>获取消息</strong></li>
+</ol>
+<ul>
+<li>**拉取式消费(pull)**：Consumer主动从Broker中拉取消息。实时性弱<blockquote>
+<p>拉取消息的时间是用户指定的，拉取时间需要注意平衡</p>
+</blockquote>
+</li>
+<li><strong>推送式消费(push)</strong>: broker收到消息后主动推送给consumer，实时性高，耗费资源<blockquote>
+<p>consumer向其关联的queue注册了监听器，这需要长连接，所以耗费资源(与每个broker建立长连接)</p>
+</blockquote>
+</li>
+<li>**长轮询(long polling)**：消费者定时去broker中获取消息，如果没获取到消息，保持连接一段时间，比如30s，30s内没有消息，则断开连接，30s内有消息，则消费消息且再等30s。中和了pull和push的利弊。</li>
+</ul>
+<ol start="2">
+<li><strong>消费消息</strong></li>
+</ol>
+<ul>
+<li><strong>广播消费</strong><br>消费者组中的每个消费者都接收topic全量的消息，各自进行消费，一条消息被消费n次，消费进度保存在消费者中</li>
+<li><strong>集群消费</strong><br>消费者组中的消费者平摊topic所有的消息，一条消息被消费一次，进度需要共享，所以消费进度存放在broker中</li>
+</ul>
+<h3 id="代码举例"><a href="#代码举例" class="headerlink" title="代码举例"></a>代码举例</h3><h4 id="rocketmq-client发送、消费消息"><a href="#rocketmq-client发送、消费消息" class="headerlink" title="rocketmq-client发送、消费消息"></a>rocketmq-client发送、消费消息</h4><ul>
+<li><p>依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.rocketmq&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;rocketmq-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void send() throws Exception &#123;</span><br><span class="line">    DefaultMQProducer producer = new DefaultMQProducer(&quot;myGroup&quot;);</span><br><span class="line">    producer.setNamesrvAddr(&quot;121.4.247.245:9876&quot;);</span><br><span class="line">    producer.setSendMsgTimeout(6000);</span><br><span class="line">    producer.start();</span><br><span class="line">    byte[] body = &quot;123&quot;.getBytes();</span><br><span class="line">    Message msg = new Message(&quot;testTopic&quot;, &quot;test&quot;, body);</span><br><span class="line">    SendResult send = producer.send(msg);</span><br><span class="line">    producer.shutdown();</span><br><span class="line">    System.out.println(send);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Test</span><br><span class="line">public void consumer() throws Exception &#123;</span><br><span class="line">    while (true)&#123;</span><br><span class="line">        DefaultMQPushConsumer consumer =new DefaultMQPushConsumer(&quot;myConsumerGroup&quot;);</span><br><span class="line">        consumer.setNamesrvAddr(&quot;121.4.247.245:9876&quot;);</span><br><span class="line">        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);</span><br><span class="line">        consumer.subscribe(&quot;testTopic&quot;,&quot;*&quot;);</span><br><span class="line">        consumer.registerMessageListener(new MessageListenerConcurrently() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public ConsumeConcurrentlyStatus consumeMessage(List&lt;MessageExt&gt; list, ConsumeConcurrentlyContext context) &#123;</span><br><span class="line">                list.forEach(msg-&gt;&#123;</span><br><span class="line">                    System.out.println(msg.getBody());</span><br><span class="line">                &#125;);</span><br><span class="line">                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        consumer.start();</span><br><span class="line">        Thread.sleep(500);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>说明</p>
+<ol>
+<li>消费者中的consumeMessage方法何时触发？<br>  broker中收到了该消费者订阅的消息后触发，所以先发送消息，后启动消费者去消费是消费不到消息的，应该消费者一直等待消息。</li>
+</ol>
+</li>
+<li><p>疑惑</p>
+<ol>
+<li>什么是pull消费者和push消费者，有何区别？</li>
+<li>消费者中收到的消息是什么类型的，如何解码？</li>
+</ol>
+</li>
+<li><p>bug</p>
+<ol>
+<li>生产者发送1消息时如果不设置发送超时时间，或设置时间较短会报错：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sendDefaultImpl call timeout</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</div></article></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">5</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"><span class="level-start"><span class="level-item">消息中间件</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-11-15T15:19:02.000Z">2022-11-15</time></p><p class="title"><a href="/2022/11/15/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E6%8C%82%E8%BD%BD%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/">Linux服务器之间挂载共享目录</a></p><p class="categories"><a href="/categories/Linux/">Linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-11-13T15:11:02.000Z">2022-11-13</time></p><p class="title"><a href="/2022/11/13/RocketMq%E5%85%A5%E9%97%A8/">RocketMq入门</a></p><p class="categories"><a href="/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/">消息中间件</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/11/"><span class="level-start"><span class="level-item">November 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/RocketMq/"><span class="tag">RocketMq</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"><span class="tag">消息中间件</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"><span class="tag">消息队列</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%BF%90%E7%BB%B4/"><span class="tag">运维</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="rxws" height="28"></a><p class="is-size-7"><span>&copy; 2022 chenfm</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
